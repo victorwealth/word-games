@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{D089BDE3-29AF-48CA-9939-03031F634271}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{698E0C43-E617-4385-B24A-C37895D35CFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{733D1813-A409-4834-8E44-BBFAA00B98CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordGamesBlazor", "WordGamesBlazor\WordGamesBlazor.csproj", "{7A08D7B4-225F-4109-9871-04014036F4FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A08D7B4-225F-4109-9871-04014036F4FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A08D7B4-225F-4109-9871-04014036F4FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A08D7B4-225F-4109-9871-04014036F4FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A08D7B4-225F-4109-9871-04014036F4FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7A08D7B4-225F-4109-9871-04014036F4FB} = {D089BDE3-29AF-48CA-9939-03031F634271}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5746F2A7-AA60-4A83-BA6D-37C990AD6F4F}
+	EndGlobalSection
+EndGlobal
