@@ -51,5 +51,18 @@ namespace HangmanTests
 
             Assert.Equal("-----", result);
         }
+
+        [Fact]
+        public void Throw_Exception_For_Invalid_Guess()
+        {
+            Assert.Throws<ArgumentException>(() => _fixture.Clue.FetchClue("pizza", '4'));
+        }
+
+        [Fact]
+        public void Throw_Exception_For_Invalid_Guess_With_Message()
+        {
+            Exception e = Assert.Throws<ArgumentException>(() => _fixture.Clue.FetchClue("pizza", '4'));
+            Assert.Equal("Invalid character", e.Message);
+        }
     }
 }

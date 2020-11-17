@@ -21,6 +21,10 @@ namespace HangmanGame
 
         public string FetchClue(string word, char guess)
         {
+            guess = char.ToLower(guess);
+            if (guess < 'a' || guess > 'z') throw new ArgumentException("Invalid character");
+            
+
             var sb = new StringBuilder();
             foreach (var character in word.ToCharArray())
             {
