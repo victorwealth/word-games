@@ -1,13 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace HangmanGame
 {
-    public class WordManager
+    public class Word : IDisposable
     {
         private HashSet<string> _usedWordsSet = new HashSet<string>();
+
         private List<string> _wordsList;
+        public List<string> WordsList 
+        { 
+            // Transient
+            // List of words will not change frequently
+            get 
+            {
+                if (_wordsList != null) return _wordsList;
+                else
+                {
+                    LoadWordsToMemory();
+                    return _wordsList;
+                }
+            } 
+        }
 
 
         public int CountAlphabet(string word, char alphabet)
@@ -24,14 +40,14 @@ namespace HangmanGame
             return count;
         }
 
-        public void LoadWordsToMemory()
+        private void LoadWordsToMemory()
         {
             _wordsList = new List<string>();
             string result;
 
             try
             {
-                StreamReader sr = new StreamReader(@"WordSource.txt");
+                using StreamReader sr = new StreamReader(@"WordSource.txt");
                 while ((result = sr.ReadLine()) != null)
                 {
                     _wordsList.Add(result);
@@ -49,7 +65,8 @@ namespace HangmanGame
 
         public string FetchUniqueWord(int requestedLength)
         {
-            foreach (var word in _wordsList)
+            // traversing will run on Linear time O(n)
+            foreach (var word in WordsList)
             {
                 if (word.Length != requestedLength) continue;
                 else if (_usedWordsSet.Add(word)) return word;
@@ -57,6 +74,8 @@ namespace HangmanGame
 
             return null;
         }
+
+        public void Dispose() { }
     }
 }
 
