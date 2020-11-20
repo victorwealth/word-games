@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{D089BDE3-29AF-48CA-9939-03031F634271}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{698E0C43-E617-4385-B24A-C37895D35CFA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{733D1813-A409-4834-8E44-BBFAA00B98CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HangmanTests", "HangmanTests\HangmanTests.csproj", "{1A7B7566-1DE0-4C3D-84B1-9151165A8A43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HangmanTests", "HangmanTests\HangmanTests.csproj", "{1A7B7566-1DE0-4C3D-84B1-9151165A8A43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWordGames.Server", "BlazorWordGames\Server\BlazorWordGames.Server.csproj", "{16D7AD0D-E554-456A-A6D9-639C242086C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HangmanGame", "HangmanGame\HangmanGame.csproj", "{E1466E13-C6AE-4F45-A20D-C245DC708788}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWordGames.Client", "BlazorWordGames\Client\BlazorWordGames.Client.csproj", "{A026E2A0-C5D6-41EC-A67B-339D2ECB3F63}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWordGames.Shared", "BlazorWordGames\Shared\BlazorWordGames.Shared.csproj", "{08FF1AC7-BEAC-43E2-84AA-BCE39030FEE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,17 +23,24 @@ Global
 		{1A7B7566-1DE0-4C3D-84B1-9151165A8A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A7B7566-1DE0-4C3D-84B1-9151165A8A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A7B7566-1DE0-4C3D-84B1-9151165A8A43}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E1466E13-C6AE-4F45-A20D-C245DC708788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1466E13-C6AE-4F45-A20D-C245DC708788}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E1466E13-C6AE-4F45-A20D-C245DC708788}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E1466E13-C6AE-4F45-A20D-C245DC708788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16D7AD0D-E554-456A-A6D9-639C242086C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16D7AD0D-E554-456A-A6D9-639C242086C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16D7AD0D-E554-456A-A6D9-639C242086C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16D7AD0D-E554-456A-A6D9-639C242086C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A026E2A0-C5D6-41EC-A67B-339D2ECB3F63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A026E2A0-C5D6-41EC-A67B-339D2ECB3F63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A026E2A0-C5D6-41EC-A67B-339D2ECB3F63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A026E2A0-C5D6-41EC-A67B-339D2ECB3F63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08FF1AC7-BEAC-43E2-84AA-BCE39030FEE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08FF1AC7-BEAC-43E2-84AA-BCE39030FEE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08FF1AC7-BEAC-43E2-84AA-BCE39030FEE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08FF1AC7-BEAC-43E2-84AA-BCE39030FEE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1A7B7566-1DE0-4C3D-84B1-9151165A8A43} = {698E0C43-E617-4385-B24A-C37895D35CFA}
-		{E1466E13-C6AE-4F45-A20D-C245DC708788} = {733D1813-A409-4834-8E44-BBFAA00B98CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5746F2A7-AA60-4A83-BA6D-37C990AD6F4F}

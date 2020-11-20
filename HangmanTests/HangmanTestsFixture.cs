@@ -1,4 +1,4 @@
-﻿using HangmanGame;
+﻿using BlazorWordGames.Server.Services.Hangman;
 using System;
 
 
@@ -6,20 +6,20 @@ namespace HangmanTests
 {
     public class HangmanTestsFixture : IDisposable
     {
-        public Word Word { get; private set; }
-        public Clue Clue { get; private set; }
+        public WordService WordService { get; private set; }
+        public ClueService ClueService { get; private set; }
         public Random random { get; private set; }
 
         public HangmanTestsFixture()
         {
-            Word = new Word();
-            Clue = new Clue();
+            WordService = new WordService();
+            ClueService = new ClueService();
             random = new Random();
         }
         public void Dispose()
         {
-            Word.Dispose();
-            Clue.Dispose();
+            WordService.Dispose();
+            ClueService.Dispose();
         }
     }
 }

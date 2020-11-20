@@ -1,14 +1,13 @@
-﻿using HangmanGame;
-using System;
+﻿using System;
 using System.Text;
 using Xunit;
 
 namespace HangmanTests
 {
-    public class ClueTests : IClassFixture<HangmanTestsFixture>
+    public class ClueServiceTests : IClassFixture<HangmanTestsFixture>
     {
         private readonly HangmanTestsFixture _fixture;
-        public ClueTests(HangmanTestsFixture fixture)
+        public ClueServiceTests(HangmanTestsFixture fixture)
         {
             _fixture = fixture;
         }
@@ -24,8 +23,8 @@ namespace HangmanTests
                 expected.Append("-");
             }
 
-            string word = _fixture.Word.FetchUniqueWord(requestedLength);
-            string clue = _fixture.Clue.FetchClue(word);
+            string word = _fixture.WordService.FetchUniqueWord(requestedLength);
+            string clue = _fixture.ClueService.FetchClue(word);
 
             Assert.Equal(expected.ToString(), clue);
         }
@@ -36,7 +35,7 @@ namespace HangmanTests
             string word = "pizza";
             char guess = 'z';
 
-            var result = _fixture.Clue.FetchClue(word, guess);
+            var result = _fixture.ClueService.FetchClue(word, guess);
 
             Assert.Equal("--zz-", result);
         }
@@ -47,7 +46,7 @@ namespace HangmanTests
             string word = "pizza";
             char guess = 'o';
 
-            var result = _fixture.Clue.FetchClue(word, guess);
+            var result = _fixture.ClueService.FetchClue(word, guess);
 
             Assert.Equal("-----", result);
         }
@@ -55,13 +54,13 @@ namespace HangmanTests
         [Fact]
         public void Throw_Exception_For_Invalid_Guess()
         {
-            Assert.Throws<ArgumentException>(() => _fixture.Clue.FetchClue("pizza", '4'));
+            Assert.Throws<ArgumentException>(() => _fixture.ClueService.FetchClue("pizza", '4'));
         }
 
         [Fact]
         public void Throw_Exception_For_Invalid_Guess_With_Message()
         {
-            Exception e = Assert.Throws<ArgumentException>(() => _fixture.Clue.FetchClue("pizza", '4'));
+            Exception e = Assert.Throws<ArgumentException>(() => _fixture.ClueService.FetchClue("pizza", '4'));
             Assert.Equal("Invalid character", e.Message);
         }
     }
