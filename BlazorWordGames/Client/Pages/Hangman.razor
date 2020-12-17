@@ -1,0 +1,56 @@
+﻿@page "/hangman"
+@inject DataService data
+
+<style>
+    .noosecanvas {
+        position: relative;
+        margin: 1rem 0;
+        text-align: center;
+    }
+
+    .layout-main {
+        background: #fff;
+        -webkit-box-shadow: 0 0 1rem rgba(0,0,0,.2);
+        box-shadow: 0 0 1rem rgba(0,0,0,.2);
+        -ms-flex-item-align: start;
+        align-self: flex-start;
+    }
+
+    #word {
+        text-align: center;
+    }
+
+    #word span {
+        display: inline-block;
+        border-bottom: solid 3px transparent;
+        border-bottom-color: transparent;
+        width: 1em;
+        vertical-align: top;
+        margin-left: 4px;
+        overflow: hidden;
+        color: #000;
+        font-size: 44px;
+    }
+
+</style>
+
+<div class="layout-main">
+    <div id="word">
+        @for(int i = 0; i < word.Count; i++)
+        {
+            <span class="hide">_</span>
+        }
+        @word.SelectedWord
+    </div>
+</div>
+
+@code {
+
+    public Word word { get; set; } = new Word();
+
+
+    protected async override Task OnParametersSetAsync()
+    {
+        word = await data.GetWord();
+    }
+}

@@ -1,7 +1,6 @@
 ﻿using BlazorWordGames.Server.Services.Hangman;
 using System;
 
-
 namespace HangmanTests
 {
     public class HangmanTestsFixture : IDisposable

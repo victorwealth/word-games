@@ -1,3 +1,4 @@
+using BlazorWordGames.Server.Services.Hangman;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +26,8 @@ namespace BlazorWordGames.Server
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddScoped<WordService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
