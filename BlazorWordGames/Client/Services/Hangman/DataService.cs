@@ -22,5 +22,17 @@ namespace BlazorWordGames.Client.Services.Hangman
         {
             return await http.GetFromJsonAsync<Word>($"api/Hangman");
         }
+
+        public async Task<Word> FetchNextWord()
+        {
+            return await http.GetFromJsonAsync<Word>($"api/Hangman/FetchWord");
+        }
+
+        public async Task<Word> FetchClue(Word word)
+        {
+            var resp = await http.PostAsJsonAsync($"api/Hangman/FetchClue", word);
+            return await resp.Content.ReadFromJsonAsync<Word>();
+        }
     }
 }
+

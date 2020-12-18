@@ -28,6 +28,7 @@ namespace BlazorWordGames.Server
             services.AddRazorPages();
 
             services.AddScoped<WordService>();
+            services.AddScoped<ClueService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

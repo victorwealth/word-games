@@ -65,7 +65,7 @@ namespace BlazorWordGames.Server.Services.Hangman
 
         public string FetchUniqueWord(int requestedLength)
         {
-            // traversing will run on Linear time O(n)
+            // Worst case runtime - Linear time O(n)
             foreach (var word in WordsList)
             {
                 if (word.Length != requestedLength) continue;
@@ -73,6 +73,24 @@ namespace BlazorWordGames.Server.Services.Hangman
             }
 
             return null;
+        }
+
+        public string FetchUniqueWord(int requestedLength, bool overloaded)
+        {
+            string word = "";
+
+            // Worst case runtime - Linear time O(n)
+            for (int i = 0; i < WordsList.Count; i++)
+            {
+                int randomIndex = new Random().Next(236000);
+                word = WordsList[randomIndex];
+
+                if (word.Length != requestedLength) continue;
+                else if (_usedWordsSet.Add(word)) return word;
+            }
+            
+
+            return word;
         }
 
         public void Dispose() { }

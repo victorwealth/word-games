@@ -1,56 +1,135 @@
 ﻿@page "/hangman"
 @inject DataService data
 
-<style>
-    .noosecanvas {
-        position: relative;
-        margin: 1rem 0;
-        text-align: center;
-    }
 
-    .layout-main {
-        background: #fff;
-        -webkit-box-shadow: 0 0 1rem rgba(0,0,0,.2);
-        box-shadow: 0 0 1rem rgba(0,0,0,.2);
-        -ms-flex-item-align: start;
-        align-self: flex-start;
-    }
-
-    #word {
-        text-align: center;
-    }
-
-    #word span {
-        display: inline-block;
-        border-bottom: solid 3px transparent;
-        border-bottom-color: transparent;
-        width: 1em;
-        vertical-align: top;
-        margin-left: 4px;
-        overflow: hidden;
-        color: #000;
-        font-size: 44px;
-    }
-
-</style>
-
-<div class="layout-main">
+<div class="layout-main container">
     <div id="word">
-        @for(int i = 0; i < word.Count; i++)
-        {
-            <span class="hide">_</span>
-        }
-        @word.SelectedWord
+        @*@for(int i = 0; i < word.Count; i++)
+            {
+                <span class="hide">_</span>
+            }*@
+        <span class="hide">@word.Clue</span>
+
+
+        <div>
+            <button class="btn btn-primary" @onclick="FetchNextWord">Next Word</button>
+            <div>@word.SelectedWord</div>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns" @onclick="@(() => SubmitClue('A'))">A</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">B</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">C</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">D</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">E</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">F</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">G</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">H</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">I</button></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns">J</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">K</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">L</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">M</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">N</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">O</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">P</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">Q</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">R</button></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns">S</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">T</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">U</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">V</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">W</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">X</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">Y</button></div>
+        <div class="col-lg-1"><button class="alpha_btns">Z</button></div>
+    </div>
+
+    <div class="row" style="display:none">
+        <div class="col-md-2"><button class="alpha_btns">At</button></div>
+        <div class="col-md-2"><button class="alpha_btns">B</button></div>
+        <div class="col-md-2"><button class="alpha_btns">C</button></div>
+        <div class="col-md-2"><button class="alpha_btns">D</button></div>
+        <div class="col-md-2"><button class="alpha_btns">E</button></div>
+        <div class="col-md-2"><button class="alpha_btns">F</button></div>
+        <div class="col-md-2"><button class="alpha_btns">G</button></div>
+        <div class="col-md-2"><button class="alpha_btns">H</button></div>
+        <div class="col-md-2"><button class="alpha_btns">I</button></div>
+
+        <div class="col-md-2"><button class="alpha_btns">I</button></div>
+        <div class="col-md-2"><button class="alpha_btns">J</button></div>
+        <div class="col-md-2"><button class="alpha_btns">K</button></div>
+        <div class="col-md-2"><button class="alpha_btns">L</button></div>
+        <div class="col-md-2"><button class="alpha_btns">M</button></div>
+        <div class="col-md-2"><button class="alpha_btns">N</button></div>
+        <div class="col-md-2"><button class="alpha_btns">O</button></div>
+        <div class="col-md-2"><button class="alpha_btns">P</button></div>
+        <div class="col-md-2"><button class="alpha_btns">Q</button></div>
+
+        <div class="col-md-2"><button class="alpha_btns">R</button></div>
+        <div class="col-md-2"><button class="alpha_btns">S</button></div>
+        <div class="col-md-2"><button class="alpha_btns">T</button></div>
+        <div class="col-md-2"><button class="alpha_btns">W</button></div>
+        <div class="col-md-2"><button class="alpha_btns">X</button></div>
+        <div class="col-md-2"><button class="alpha_btns">Y</button></div>
+        <div class="col-md-2"><button class="alpha_btns">Z</button></div>
+    </div>
+
+    <div class="row mobile-screen" style="display:none">
+        <div class="col-3"><button class="alpha_btns">As</button></div>
+        <div class="col-3"><button class="alpha_btns">B</button></div>
+        <div class="col-3"><button class="alpha_btns">C</button></div>
+        <div class="col-3"><button class="alpha_btns">D</button></div>
+        <div class="col-3"><button class="alpha_btns">E</button></div>
+        <div class="col-3"><button class="alpha_btns">F</button></div>
+        <div class="col-3"><button class="alpha_btns">G</button></div>
+        <div class="col-3"><button class="alpha_btns">H</button></div>
+        <div class="col-3"><button class="alpha_btns">I</button></div>
+
+        <div class="col-3"><button class="alpha_btns">J</button></div>
+        <div class="col-3"><button class="alpha_btns">K</button></div>
+        <div class="col-3"><button class="alpha_btns">L</button></div>
+        <div class="col-3"><button class="alpha_btns">M</button></div>
+        <div class="col-3"><button class="alpha_btns">N</button></div>
+        <div class="col-3"><button class="alpha_btns">O</button></div>
+        <div class="col-3"><button class="alpha_btns">P</button></div>
+        <div class="col-3"><button class="alpha_btns">Q</button></div>
+
+        <div class="col-3"><button class="alpha_btns">R</button></div>
+        <div class="col-3"><button class="alpha_btns">S</button></div>
+        <div class="col-3"><button class="alpha_btns">T</button></div>
+        <div class="col-3"><button class="alpha_btns">W</button></div>
+        <div class="col-3"><button class="alpha_btns">X</button></div>
+        <div class="col-3"><button class="alpha_btns">Y</button></div>
+        <div class="col-3"><button class="alpha_btns">Z</button></div>
+    </div>
+
 </div>
 
 @code {
 
     public Word word { get; set; } = new Word();
 
-
     protected async override Task OnParametersSetAsync()
     {
         word = await data.GetWord();
+    }
+
+    protected async Task FetchNextWord()
+    {
+        word = await data.GetWord();
+        StateHasChanged();
+    }
+
+    async Task SubmitClue(char guess)
+    {
+        word.Guess = guess;
+        word = await data.FetchClue(word);
+        StateHasChanged();
     }
 }

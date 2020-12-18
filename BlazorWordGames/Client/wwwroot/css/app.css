@@ -181,3 +181,65 @@ app {
         display: block;
     }
 }
+
+
+/**************CUSTOM*************************/
+.noosecanvas {
+    position: relative;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.layout-main {
+    background: #fff;
+    -webkit-box-shadow: 0 0 1rem rgba(0,0,0,.2);
+    box-shadow: 0 0 1rem rgba(0,0,0,.2);
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+}
+
+#word {
+    text-align: center;
+}
+
+    #word span {
+        display: inline-block;
+        border-bottom: solid 3px transparent;
+        border-bottom-color: transparent;
+        width: auto;
+        vertical-align: top;
+        margin-left: 4px;
+        overflow: hidden;
+        color: #000;
+        font-size: 60px;
+        letter-spacing: 4px;
+    }
+
+.alpha_btns {
+    font-size: 1.5rem;
+    line-height: 1em;
+    max-width: 440px;
+    margin: 0;
+    padding: 0;
+    width: 3em;
+    padding: .2em;
+    margin: .1em;
+    text-align: center;
+    background: #06c;
+    color: #fff;
+    border-radius: .25em;
+    cursor: pointer;
+    -webkit-box-shadow: rgba(0,0,0,.5) 1px 1px;
+    box-shadow: rgba(0,0,0,.5) 1px 1px;
+}
+
+
+@media screen and (min-width: 768px) {
+    .mobile-screen {
+        display: none;
+    }
+
+    .tablet-screen {
+        display: block;
+    }
+}
