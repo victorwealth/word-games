@@ -8,7 +8,7 @@
             {
                 <span class="hide">_</span>
             }*@
-        <span class="hide">@word.Clue</span>
+        <span class="hide">@word.DisplayClue</span>
 
 
         <div>
@@ -18,36 +18,36 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns" @onclick="@(() => SubmitClue('A'))">A</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">B</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">C</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">D</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">E</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">F</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">G</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">H</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">I</button></div>
+        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('A'))">A</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('B'))">B</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('C'))">C</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('D'))">D</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('E'))">E</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('F'))">F</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('G'))">G</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('H'))">H</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('I'))">I</button></div>
     </div>
     <div class="row">
-        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns">J</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">K</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">L</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">M</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">N</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">O</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">P</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">Q</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">R</button></div>
+        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('J'))">J</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('K'))">K</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('L'))">L</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('M'))">M</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('N'))">N</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('O'))">O</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('P'))">P</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('Q'))">Q</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('R'))">R</button></div>
     </div>
     <div class="row">
-        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns">S</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">T</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">U</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">V</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">W</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">X</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">Y</button></div>
-        <div class="col-lg-1"><button class="alpha_btns">Z</button></div>
+        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('S'))">S</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('T'))">T</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('U'))">U</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('V'))">V</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('W'))">W</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('X'))">X</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('Y'))">Y</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('Z'))">Z</button></div>
     </div>
 
     <div class="row" style="display:none">
@@ -126,7 +126,7 @@
         StateHasChanged();
     }
 
-    async Task SubmitClue(char guess)
+    async Task Guess(char guess)
     {
         word.Guess = guess;
         word = await data.FetchClue(word);

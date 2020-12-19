@@ -14,8 +14,8 @@ namespace BlazorWordGames.Server.Controllers
     [ApiController]
     public class HangmanController : ControllerBase
     {
-       private WordService _wordService;
-       private ClueService _clueService;
+       private readonly WordService _wordService;
+       private readonly ClueService _clueService;
 
         public HangmanController(WordService wordService, ClueService clueService)
         {
@@ -34,18 +34,21 @@ namespace BlazorWordGames.Server.Controllers
         public Word FetchWord()
         {
             int random = new Random().Next(6) + 5;
-            string word = _wordService.FetchUniqueWord(random, true);
-            string clue = _clueService.FetchClue(word);
+            string word = _wordService.FetchUniqueWord(random);
+            var clue = _clueService.FetchClue(word);
 
-            return new Word() { SelectedWord = word, Count = word.Length, Clue = clue };
+            return new Word() { SelectedWord = word, Count = word.Length, Clue = clue, DisplayClue = new string(clue) };
         }
 
         [HttpPost]
         [Route("FetchClue")]
         public Word FetchClue([FromBody] Word word)
         {
-            string clue = _clueService.FetchClue(word.SelectedWord, word.Guess);
-            return new Word() { SelectedWord = word.SelectedWord, Count = word.SelectedWord.Length, Clue = clue };
+            var clue = _clueService.FetchClueArray(word.SelectedWord, word.Guess, word.Clue);
+            word.Clue = clue;
+            word.DisplayClue = new string(clue);
+
+            return word;
         }
     }
 }

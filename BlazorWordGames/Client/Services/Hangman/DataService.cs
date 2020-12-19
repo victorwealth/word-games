@@ -11,7 +11,7 @@ namespace BlazorWordGames.Client.Services.Hangman
     public class DataService
     {
         public string SelectedWord { get; set; }
-        private HttpClient http;
+        private readonly HttpClient http;
 
         public DataService(HttpClient httpClient)
         {

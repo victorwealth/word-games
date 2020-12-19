@@ -8,8 +8,9 @@ namespace BlazorWordGames.Shared
     {
         public string SelectedWord { get; set; }
         public int Count { get; set; }
-        public string Clue { get; set; }
+        public char[] Clue { get; set; }
         public char Guess { get; set; }
+        public string DisplayClue { get; set; }
     }
 }
 

@@ -24,7 +24,7 @@ namespace HangmanTests
             }
 
             string word = _fixture.WordService.FetchUniqueWord(requestedLength);
-            string clue = _fixture.ClueService.FetchClue(word);
+            string clue = null; //_fixture.ClueService.FetchClue(word);
 
             Assert.Equal(expected.ToString(), clue);
         }
