@@ -1,9 +1,6 @@
 ﻿using BlazorWordGames.Shared;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BlazorWordGames.Server.Services.Hangman
 {
@@ -12,16 +9,12 @@ namespace BlazorWordGames.Server.Services.Hangman
         public char[] FetchClue(string word)
         {
             var clue = new char[word.Length];
-            //var clue = new StringBuilder();
             int wordLength = word.Length;
 
             for (int i = 0; i < wordLength; i++)
             {
-                //clue.Append("-");
                 clue[i] = '-';
             }
-
-            //return clue.ToString();
 
             return clue;
         }
@@ -58,7 +51,6 @@ namespace BlazorWordGames.Server.Services.Hangman
             }
 
             
-            //word.DisableGuess[guess] = true;
             word.DisplayClue = new string(word.Clue);
 
             return word;

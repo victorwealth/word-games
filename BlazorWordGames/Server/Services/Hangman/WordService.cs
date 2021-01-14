@@ -63,17 +63,6 @@ namespace BlazorWordGames.Server.Services.Hangman
             }
         }
 
-        //public string FetchUniqueWord(int requestedLength)
-        //{
-        //    // Worst case runtime - Linear time O(n)
-        //    foreach (var word in WordsList)
-        //    {
-        //        if (word.Length != requestedLength) continue;
-        //        else if (_usedWordsSet.Add(word)) return word;
-        //    }
-
-        //    return null;
-        //}
 
         public string FetchUniqueWord(int requestedLength)
         {
