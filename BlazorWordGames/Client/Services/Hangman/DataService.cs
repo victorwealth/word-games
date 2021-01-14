@@ -1,7 +1,4 @@
 ﻿using BlazorWordGames.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -18,20 +15,20 @@ namespace BlazorWordGames.Client.Services.Hangman
             http = httpClient;
         }
 
-        public async Task<Word> GetWord()
+        public async Task<WordDto> GetWord()
         {
-            return await http.GetFromJsonAsync<Word>($"api/Hangman");
+            return await http.GetFromJsonAsync<WordDto>($"api/Hangman");
         }
 
-        public async Task<Word> FetchNextWord()
+        public async Task<WordDto> FetchNextWord()
         {
-            return await http.GetFromJsonAsync<Word>($"api/Hangman/FetchWord");
+            return await http.GetFromJsonAsync<WordDto>($"api/Hangman/FetchWord");
         }
 
-        public async Task<Word> FetchClue(Word word)
+        public async Task<WordDto> FetchClue(WordDto word)
         {
             var resp = await http.PostAsJsonAsync($"api/Hangman/FetchClue", word);
-            return await resp.Content.ReadFromJsonAsync<Word>();
+            return await resp.Content.ReadFromJsonAsync<WordDto>();
         }
     }
 }

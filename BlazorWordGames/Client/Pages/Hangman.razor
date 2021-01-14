@@ -1,6 +1,7 @@
 ﻿@page "/hangman"
 @inject DataService data
 
+<meta http-equiv="cache-control" content="no-cache" />
 
 <div class="layout-main container">
     <div id="word">
@@ -8,7 +9,7 @@
             {
                 <span class="hide">_</span>
             }*@
-        <span class="hide">@word.DisplayClue</span>
+        <span class="clue">@word.DisplayClue</span>
 
 
         <div>
@@ -16,39 +17,41 @@
             <div>@word.SelectedWord</div>
         </div>
     </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns" disabled="@disableBtn['a']"  @onclick="@(() => Guess('A'))">A</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['b']" @onclick="@(() => Guess('B'))">B</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['c']" @onclick="@(() => Guess('C'))">C</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['d']" @onclick="@(() => Guess('D'))">D</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['e']" @onclick="@(() => Guess('E'))">E</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['f']" @onclick="@(() => Guess('F'))">F</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['g']" @onclick="@(() => Guess('G'))">G</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['h']" @onclick="@(() => Guess('H'))">H</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['i']" @onclick="@(() => Guess('I'))">I</button></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns" disabled="@disableBtn['j']" @onclick="@(() => Guess('J'))">J</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['k']" @onclick="@(() => Guess('K'))">K</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['l']" @onclick="@(() => Guess('L'))">L</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['m']" @onclick="@(() => Guess('M'))">M</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['n']" @onclick="@(() => Guess('N'))">N</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['o']" @onclick="@(() => Guess('O'))">O</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['p']" @onclick="@(() => Guess('P'))">P</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['q']" @onclick="@(() => Guess('Q'))">Q</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['r']" @onclick="@(() => Guess('R'))">R</button></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns" disabled="@disableBtn['s']" @onclick="@(() => Guess('S'))">S</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['t']" @onclick="@(() => Guess('T'))">T</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['u']" @onclick="@(() => Guess('U'))">U</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['v']" @onclick="@(() => Guess('V'))">V</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['w']" @onclick="@(() => Guess('W'))">W</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['x']" @onclick="@(() => Guess('X'))">X</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['y']" @onclick="@(() => Guess('Y'))">Y</button></div>
+        <div class="col-lg-1"><button class="alpha_btns" disabled="@disableBtn['z']" @onclick="@(() => Guess('Z'))">Z</button></div>
+    </div>
 
-    <div class="row">
-        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('A'))">A</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('B'))">B</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('C'))">C</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('D'))">D</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('E'))">E</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('F'))">F</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('G'))">G</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('H'))">H</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('I'))">I</button></div>
-    </div>
-    <div class="row">
-        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('J'))">J</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('K'))">K</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('L'))">L</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('M'))">M</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('N'))">N</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('O'))">O</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('P'))">P</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('Q'))">Q</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('R'))">R</button></div>
-    </div>
-    <div class="row">
-        <div class="col-lg-1 offset-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('S'))">S</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('T'))">T</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('U'))">U</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('V'))">V</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('W'))">W</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('X'))">X</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('Y'))">Y</button></div>
-        <div class="col-lg-1"><button class="alpha_btns" @onclick="@(() => Guess('Z'))">Z</button></div>
-    </div>
+    <br/>
 
     <div class="row" style="display:none">
         <div class="col-md-2"><button class="alpha_btns">At</button></div>
@@ -111,9 +114,28 @@
 
 </div>
 
+
+
+@code {
+    // TODO
+    // 1. Disable button(s) after it's clicked - DONE
+    // 2. Change color of correct guess to green and incorrect guess to red
+    // 3. Fix unit tests
+
+}
+
+
 @code {
 
-    public Word word { get; set; } = new Word();
+    public WordDto word { get; set; } = new WordDto();
+    public Dictionary<char, bool> disableBtn = new Dictionary<char, bool>()
+    {
+        { 'a', false },{ 'b', false },{ 'c', false },{ 'd', false },{ 'e', false },{ 'f', false },{ 'g', false },{ 'h', false },{ 'i', false },{ 'j', false },
+        { 'k', false },{ 'l', false },{ 'm', false },{ 'n', false },{ 'o', false },{ 'p', false },{ 'q', false },{ 'r', false },{ 's', false },{ 't', false },
+        { 'u', false },{ 'v', false },{ 'w', false },{ 'x', false },{ 'y', false },{ 'z', false }
+    };
+
+
 
     protected async override Task OnParametersSetAsync()
     {
@@ -122,12 +144,17 @@
 
     protected async Task FetchNextWord()
     {
+        // unset all items whose value is true, to false
+        foreach (var item in disableBtn.Where(item => item.Value == true).ToList())
+            disableBtn[item.Key] = false;
+
         word = await data.GetWord();
         StateHasChanged();
     }
 
     async Task Guess(char guess)
     {
+        disableBtn[char.ToLower(guess)] = true;
         word.Guess = guess;
         word = await data.FetchClue(word);
         StateHasChanged();

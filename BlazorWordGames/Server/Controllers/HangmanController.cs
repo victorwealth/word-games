@@ -25,30 +25,26 @@ namespace BlazorWordGames.Server.Controllers
 
         [HttpGet]
         [Route("GetWord")]
-        public Word Get()
+        public WordDto Get()
         {
             return FetchWord();
         }
 
         [HttpGet]
-        public Word FetchWord()
+        public WordDto FetchWord()
         {
             int random = new Random().Next(6) + 5;
-            string word = _wordService.FetchUniqueWord(random);
-            var clue = _clueService.FetchClue(word);
+            string selectedWord = _wordService.FetchUniqueWord(random);
+            var clue = _clueService.FetchClue(selectedWord);
 
-            return new Word() { SelectedWord = word, Count = word.Length, Clue = clue, DisplayClue = new string(clue) };
+            var word = new WordDto() { SelectedWord = selectedWord, Count = selectedWord.Length, Clue = clue, DisplayClue = new string(clue) };
+
+            return word;
         }
 
         [HttpPost]
         [Route("FetchClue")]
-        public Word FetchClue([FromBody] Word word)
-        {
-            var clue = _clueService.FetchClueArray(word.SelectedWord, word.Guess, word.Clue);
-            word.Clue = clue;
-            word.DisplayClue = new string(clue);
+        public WordDto FetchClue([FromBody] WordDto word) => _clueService.FetchClueArray(word);
 
-            return word;
-        }
     }
 }

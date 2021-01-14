@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlazorWordGames.Shared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,20 +44,24 @@ namespace BlazorWordGames.Server.Services.Hangman
             return sb.ToString();
         }
 
-        public char[] FetchClueArray(string word, char guess, char[] clue)
+        public WordDto FetchClueArray(WordDto word)
         {
-            guess = char.ToLower(guess);
-            var wordCharArray = word.ToCharArray();
+            var guess = char.ToLower(word.Guess);
+            var wordCharArray = word.SelectedWord.ToCharArray();
 
             if (guess < 'a' || guess > 'z') throw new ArgumentException("Invalid character");
 
-            for (int i = 0; i < word.Length; i++)
+            for (int i = 0; i < word.SelectedWord.Length; i++)
             {
                 if (guess == char.ToLower(wordCharArray[i]))
-                    clue[i] = guess;
+                    word.Clue[i] = guess;
             }
 
-            return clue;
+            
+            //word.DisableGuess[guess] = true;
+            word.DisplayClue = new string(word.Clue);
+
+            return word;
 
         }
 

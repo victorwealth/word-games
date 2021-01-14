@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using Xunit;
 
 namespace HangmanTests
@@ -16,17 +15,17 @@ namespace HangmanTests
         public void FetchClue_Prints_Dashes_To_Match_Word()
         {
             int requestedLength = _fixture.random.Next(6) + 5;
-            var expected = new StringBuilder();
+            var expected = new char[requestedLength];
 
             for (int i = 0; i < requestedLength; i++)
             {
-                expected.Append("-");
+                expected[i] = '-';
             }
 
             string word = _fixture.WordService.FetchUniqueWord(requestedLength);
-            string clue = null; //_fixture.ClueService.FetchClue(word);
+            char[] clue = _fixture.ClueService.FetchClue(word);
 
-            Assert.Equal(expected.ToString(), clue);
+            Assert.Equal(expected, clue);
         }
 
         [Fact]
